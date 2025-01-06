@@ -15,7 +15,7 @@ const ValuedClients = () => {
   const clients = [
     {
       name: "CafeJavas",
-      logo: "/img/cj.png"
+      logo: "/img/mandela-group.png"
     },
     {
       name: "FourPointsHotel",
