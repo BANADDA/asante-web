@@ -51,17 +51,17 @@ export const footerContent = {
         { name: "Careers", path: "#" }
       ]
     },
-    {
-      name: "Services",
-      items: [
-        { name: "Residential Waste", path: "#" },
-        { name: "Commercial Waste", path: "#" },
-        { name: "Retail And Institutional", path: "#" },
-        { name: "Commercial Liquid", path: "#" },
-        { name: "Dumpster Rental", path: "#" },
-        { name: "Industrial Cleaning", path: "#" }
-      ]
-    },
+      {
+        "name": "Services",
+        "items": [
+          { "name": "Residential Waste", "path": "#" },
+          { "name": "Commercial Waste", "path": "#" },
+          { "name": "Retail And Institutional", "path": "#" },
+          { "name": "Commercial Liquid", "path": "#" },
+          { "name": "E Waste Management", "path": "#" },
+          { "name": "Oil and Gas", "path": "#" }
+        ]
+      },    
     {
       name: "Industries",
       items: [

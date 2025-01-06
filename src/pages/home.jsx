@@ -1,5 +1,4 @@
-import { Footer } from "@/widgets/layout";
-import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
 import { useEffect, useState } from "react";
 import InquiryFormSection from "./requestPickupSection";
 import ServicesSection from "./servicesSection";
@@ -7,6 +6,7 @@ import WasteManagementSection from "./wasteManagementSection";
 
 export function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const slides = [
     {
@@ -45,6 +45,24 @@ export function Home() {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  // Close modal when pressing escape key
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) setIsVideoOpen(false);
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  // Create a secure YouTube embed URL
+  const getYouTubeEmbedURL = () => {
+    const videoId = 'OtWxxJRsLT4';
+    return `https://www.youtube.com/embed/${videoId}`;
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -67,7 +85,7 @@ export function Home() {
 
         {/* Content */}
         <div className="relative container mx-auto px-4">
-          <div className="max-w-3xl"> {/* Removed mx-auto to keep left alignment */}
+          <div className="max-w-3xl">
             <p className="text-white/90 text-sm sm:text-base md:text-lg mb-2 sm:mb-3">
               {slides[currentSlide].subtitle}
             </p>
@@ -82,7 +100,10 @@ export function Home() {
                 REQUEST SERVICE TODAY!
                 <ChevronRight className="w-4 h-4" />
               </button>
-              <button className="bg-white/10 hover:bg-white/20 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium flex items-center justify-center sm:justify-start gap-2 backdrop-blur-sm text-sm sm:text-base">
+              <button 
+                onClick={() => setIsVideoOpen(true)}
+                className="bg-white/10 hover:bg-white/20 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium flex items-center justify-center sm:justify-start gap-2 backdrop-blur-sm text-sm sm:text-base"
+              >
                 How it works
                 <Play className="w-4 h-4" />
               </button>
@@ -99,7 +120,7 @@ export function Home() {
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1.5 sm:p-2 rounded-full backdrop-blur-sm hidden sm:block"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1.5 sm:p-2 rounded-md backdrop-blur-sm hidden sm:block"
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
@@ -119,12 +140,50 @@ export function Home() {
         </div>
       </div>
 
+      {/* Video Modal */}
+      {isVideoOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setIsVideoOpen(false)}
+          />
+          
+          {/* Modal */}
+          <div className="relative bg-white rounded-lg w-full max-w-4xl mx-4">
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b">
+              <h3 className="text-lg font-semibold text-gray-900">
+                How Our Waste Management Service Works
+              </h3>
+              <button 
+                onClick={() => setIsVideoOpen(false)}
+                className="text-gray-500 hover:text-gray-700 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            {/* Video Container */}
+            <div className="relative w-full pt-[56.25%]">
+              <iframe
+                src={getYouTubeEmbedURL()}
+                title="Waste Management Service Video"
+                className="absolute inset-0 w-full h-full"
+                frameBorder="0"
+                loading="lazy"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       <WasteManagementSection/>
       <ServicesSection/>
       <InquiryFormSection/>
-      <div className="bg-white">
-        <Footer />
-      </div>
     </>
   );
 }

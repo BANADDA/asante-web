@@ -34,9 +34,9 @@ export const servicesContent = {
             image: "/img/secure-shredding.jpg"
         },
         {
-            title: "Environment & Waste Management Consultation",
-            description: "Our environmental consultancy was established to provide a practical, knowledgeable, and good value service to small and medium sized organisations & esteemed Clients. Our waste management consultants develop a waste management plan tailored to your business. This has enabled us to produce high quality documents, procedures and systems that demonstrate realistic, succinct and practical measures.",
-            image: "/img/environmental-consulting.webp"
+            title: "Oil & Gas Waste Management",
+            description: "We provide specialized waste management services for the oil and gas industry, ensuring the safe handling, treatment, and disposal of hazardous by-products. Our solutions help maintain compliance with environmental regulations and minimize risks associated with oil and gas waste.",
+            image: "/img/Uganda-Oil-Refinery.jpg"
         },
         {
             title: "Cesspool & Drain Cleaning",

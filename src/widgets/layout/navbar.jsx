@@ -2,7 +2,7 @@ import { ChevronDown, Mail, Menu, Phone, Search, ShoppingCart, X } from 'lucide-
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export function Navbar({ routes }) {  // Removed brandName prop
+export function Navbar({ routes }) {
   const [openNav, setOpenNav] = useState(false);
   const [cartCount, setCartCount] = useState(2);
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +33,6 @@ export function Navbar({ routes }) {  // Removed brandName prop
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-8">
             <div className="flex space-x-4 text-xs">
-              {/* <a href="/locations" className="hover:text-gray-300">Drop Off Locations</a> */}
               <a href="/careers" className="hover:text-gray-300">Careers</a>
               <a href="/faqs" className="hover:text-gray-300">FAQs</a>
             </div>
@@ -78,7 +77,8 @@ export function Navbar({ routes }) {  // Removed brandName prop
                       to={path}
                       className="flex items-center text-gray-800 hover:text-blue-600 font-medium text-sm uppercase"
                     >
-                      {name} <ChevronDown className="w-3 h-3 ml-1" />
+                      {name}
+                      {dropdownItems && <ChevronDown className="w-3 h-3 ml-1" />}
                     </Link>
                     {dropdownItems && (
                       <div className="absolute left-0 hidden group-hover:block mt-1 w-40 bg-white/95 backdrop-blur-sm border rounded-md shadow-lg py-1">
@@ -101,7 +101,7 @@ export function Navbar({ routes }) {  // Removed brandName prop
             {/* Right Section */}
             <div className="hidden lg:flex items-center space-x-4">
               <button className="border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-4 py-1.5 rounded text-sm font-medium transition-colors">
-                Request Pickup
+                Request Schedule
               </button>
             </div>
 
@@ -128,7 +128,8 @@ export function Navbar({ routes }) {  // Removed brandName prop
                       to={path}
                       className="flex items-center justify-between text-gray-800 hover:text-blue-600 font-medium text-sm uppercase px-3"
                     >
-                      {name} <ChevronDown className="w-3 h-3 ml-1" />
+                      {name}
+                      {dropdownItems && <ChevronDown className="w-3 h-3 ml-1" />}
                     </Link>
                     {dropdownItems && (
                       <div className="pl-3 mt-1 space-y-1 bg-gray-50">
@@ -157,7 +158,7 @@ export function Navbar({ routes }) {  // Removed brandName prop
                   </div>
                 </div>
                 <button className="w-full border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-4 py-1.5 rounded text-sm font-medium transition-colors">
-                  Request Pickup
+                  Request Schedule
                 </button>
               </div>
             </div>
