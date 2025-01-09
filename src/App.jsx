@@ -4,6 +4,7 @@ import Navbar from "@/widgets/layout/navbar";
 import { Navigate, Route, Routes } from "react-router-dom";
 import AllServices from "./pages/allServices";
 import ServicesLayout from "./pages/asanteDifference";
+import ContactPage from "./pages/contact/contactHome";
 import AboutUs from "./pages/servicesScreen";
 import FeedbackButton from "./widgets/feedback/FeedbackButton";
 import { Footer } from "./widgets/layout";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/about" element={<AboutUs/>} />
           <Route path="/services" element={<ServicesLayout/>} />
           <Route path="/all-services" element={<AllServices/>} />
+          <Route path="/contact" element={<ContactPage/>} />
         </Routes>
       </main>
       <FeedbackButton/>

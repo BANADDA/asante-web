@@ -2,6 +2,9 @@ import { Download, FileText } from 'lucide-react';
 
 const DownloadButton = ({ filename, displayName }) => {
   const handleDownload = () => {
+    console.log('====================================');
+    console.log("Clicked download");
+    console.log('====================================');
     // Construct the file path in the public directory
     const filepath = `/pdf/${filename}`;
     

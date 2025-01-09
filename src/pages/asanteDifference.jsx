@@ -1,8 +1,10 @@
 import WasteServices from '@/widgets/about-cards';
 import DownloadSection from '@/widgets/DownloadButton';
 import ValuedClients from '@/widgets/ValuedClients';
+import VideoSection from '@/widgets/VideoSection';
 import { ArrowRight, Building2, Container, Droplets, Factory, Sparkles, Store } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const serviceDetails = {
   'Residential Waste': {
@@ -119,21 +121,24 @@ const ServicesLayout = () => {
   return (
     <div className="bg-white min-h-screen font-sans">
       {/* Hero Section */}
-      <div className="relative h-[250px] bg-[#0d2b09] overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/img/waste-4.jpg')] bg-cover bg-center opacity-30"></div>
-        <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
-          <h1 className="text-4xl font-bold text-white mb-6">
-            Our Services
-          </h1>
-          <p className="text-xl text-gray-100 max-w-3xl font-medium leading-relaxed">
-            We offer a full range of waste management services to
-            both public & private clients across categories such as
-            Hazardous Waste, Domestic Waste, Medical Waste and
-            Pharmaceutical, Cesspool, E-Waste as well as Oil and Gas
-            Waste
-          </p>
-        </div>
-      </div>
+      <div className="relative h-[200px] bg-green-900 overflow-hidden">
+  <div className="absolute inset-0 bg-[url('/img/waste-4.jpg')] bg-cover bg-center opacity-30"></div>
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-black opacity-40"></div>
+  <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
+    <h1 className="text-4xl font-bold text-white mb-6">
+      Our Services
+    </h1>
+    <p className="text-xl text-gray-100 max-w-5xl font-medium leading-snug">
+      We offer a full range of waste management services to
+      both public & private clients across categories such as
+      Hazardous Waste, Domestic Waste, Medical Waste and
+      Pharmaceutical, Cesspool, E-Waste as well as Oil and Gas
+      Waste
+    </p>
+  </div>
+</div>
+
 
       {/* Main Content Area */}
       <div className="container mx-auto px-4 py-12">
@@ -158,10 +163,13 @@ const ServicesLayout = () => {
                 <p className="mb-2">+256 778 841383</p>
                 <p>Kampala, Uganda</p>
               </div>
-              <button className="flex items-center gap-2 bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded">
-                <span>Contact Our Team</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <Link 
+  to="/contact" 
+  className="flex items-center gap-2 bg-yellow-800 hover:bg-yellow-700 text-white px-4 py-2 rounded transition-colors duration-200"
+>
+  <span>Contact Our Team</span>
+  <ArrowRight className="w-4 h-4" />
+</Link>
             </div>
 
             {/* Download Section */}
@@ -179,13 +187,7 @@ const ServicesLayout = () => {
               </p>
 
               {/* Video Section */}
-              <div className="relative">
-                <img
-                  src="/img/bg.jpg"
-                  alt="Waste Management"
-                  className="w-full h-80 object-cover rounded-md"
-                />
-              </div>
+              <VideoSection/>
             </div>
 
             {/* Key Benefits Section */}

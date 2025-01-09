@@ -8,14 +8,14 @@ const QuickLinksMenu = ({ isOpen, onClose, onAction, darkMode }) => {
   ];
 
   const handleOptionClick = (optionId) => {
-    onAction();
+    onAction(optionId);
   };
 
   if (!isOpen) return null;
 
   return (
     <>
-      <div 
+      <div
         className="fixed inset-0 z-40"
         onClick={onClose}
       />

@@ -1,22 +1,32 @@
 import { SupportAgent } from '@mui/icons-material';
 import { useState } from 'react';
 import FeedbackModal from './feedBackModel';
+import InquiryModal from './InquiryModal';
 import QuickLinksMenu from './QuickLinksMenu';
 
 const FeedbackButton = ({ darkMode }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(false);
+  const [modalType, setModalType] = useState('feedback'); // 'feedback' or 'inquiry'
   const [key, setKey] = useState(0);
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (actionType) => {
     setIsQuickLinksOpen(false);
     setIsModalOpen(true);
     setKey(prevKey => prevKey + 1);
+    
+    // Set modal type based on action
+    if (actionType === 'pickup') {
+      setModalType('inquiry');
+    } else if (actionType === 'service') {
+      setModalType('feedback');
+    }
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setModalType('feedback'); // Reset to default
   };
 
   return (
@@ -83,12 +93,21 @@ const FeedbackButton = ({ darkMode }) => {
         darkMode={darkMode}
       />
 
-      <FeedbackModal
-        key={key}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        darkMode={darkMode}
-      />
+      {modalType === 'feedback' ? (
+        <FeedbackModal
+          key={`feedback-${key}`}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          darkMode={darkMode}
+        />
+      ) : (
+        <InquiryModal
+          key={`inquiry-${key}`}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          darkMode={darkMode}
+        />
+      )}
     </>
   );
 };

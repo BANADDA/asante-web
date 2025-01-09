@@ -33,14 +33,14 @@ export function Navbar({ routes }) {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-8">
             <div className="flex space-x-4 text-xs">
-              <a href="/careers" className="hover:text-gray-300">Careers</a>
-              <a href="/faqs" className="hover:text-gray-300">FAQs</a>
+              <Link to="/careers" className="hover:text-gray-300">Careers</Link>
+              <Link to="/faqs" className="hover:text-gray-300">FAQs</Link>
             </div>
             
             <div className="flex space-x-4 text-xs">
               <span className="flex items-center">
                 <Phone className="w-3 h-3 mr-1" />
-                <a href="tel:+12011512741">+256 778 841383</a>
+                <a href="tel:+256778841383">+256 778 841383</a>
               </span>
               <span className="flex items-center">
                 <Mail className="w-3 h-3 mr-1" />
@@ -98,11 +98,14 @@ export function Navbar({ routes }) {
               </ul>
             </div>
 
-            {/* Right Section */}
+            {/* Right Section - Desktop "Request Schedule" Button */}
             <div className="hidden lg:flex items-center space-x-4">
-              <button className="border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-4 py-1.5 rounded text-sm font-medium transition-colors">
+              <Link 
+                to="/contact"
+                className="border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-4 py-1.5 rounded text-sm font-medium transition-colors"
+              >
                 Request Schedule
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -157,9 +160,13 @@ export function Navbar({ routes }) {
                     <span className="text-sm text-gray-600">Cart ({cartCount})</span>
                   </div>
                 </div>
-                <button className="w-full border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-4 py-1.5 rounded text-sm font-medium transition-colors">
+                {/* Mobile "Request Schedule" Button */}
+                <Link 
+                  to="/contact"
+                  className="block w-full text-center border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-4 py-1.5 rounded text-sm font-medium transition-colors"
+                >
                   Request Schedule
-                </button>
+                </Link>
               </div>
             </div>
           )}
