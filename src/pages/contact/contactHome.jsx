@@ -166,11 +166,11 @@ const ContactPage = () => {
           <div className="space-y-1">
             <p className="text-gray-500 flex items-center gap-2 text-sm">
               <span className="text-blue-800">📧</span>
-              operations@asantewm.com
+              cc@asantewm.com
             </p>
             <p className="text-gray-500 flex items-center gap-2 text-sm">
               <span className="text-blue-800">📞</span>
-              +256 778 841383
+              +256 778 272688/+256 751 272683
             </p>
           </div>
           
@@ -192,7 +192,7 @@ const ContactPage = () => {
             <div>
               <h2 className="text-sm font-semibold mb-1">Media Inquiries</h2>
               <p className="text-gray-500 text-xs">
-                For media-related questions or press inquiries, please contact us at operations@asantewm.com
+                For media-related questions or press inquiries, please contact us at cc@asantewm.com
               </p>
             </div>
           </div>

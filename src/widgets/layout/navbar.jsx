@@ -40,11 +40,11 @@ export function Navbar({ routes }) {
             <div className="flex space-x-4 text-xs">
               <span className="flex items-center">
                 <Phone className="w-3 h-3 mr-1" />
-                <a href="tel:+256778841383">+256 778 841383</a>
+                <a href="tel:+256778841383">+256 778 272688/+256 751 272683</a>
               </span>
               <span className="flex items-center">
                 <Mail className="w-3 h-3 mr-1" />
-                <a href="mailto:operations@asantewm.com">operations@asantewm.com</a>
+                <a href="mailto:operations@asantewm.com">cc@asantewm.com</a>
               </span>
             </div>
           </div>
