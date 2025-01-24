@@ -21,11 +21,12 @@ export const routes = [
     //   { name: "Pricing Plans", path: "/services" },
     //   { name: "Shop", path: "/services" }
     // ]
-  },  {
-    name: "Contact Us",
-    path: "/contact",
-    // element: <Home />
-  }
+  },  
+  // {
+  //   name: "Contact Us",
+  //   path: "/contact",
+  //   // element: <Home />
+  // }
 ];
 
 export default routes;
