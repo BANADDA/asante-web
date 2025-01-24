@@ -165,7 +165,7 @@ export function Navbar({ routes }) {
                   to="/contact"
                   className="block w-full text-center border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-4 py-1.5 rounded text-sm font-medium transition-colors"
                 >
-                  Request Schedule
+                  Special Collection
                 </Link>
               </div>
             </div>
