@@ -2,9 +2,9 @@ import { X } from 'lucide-react';
 
 const QuickLinksMenu = ({ isOpen, onClose, onAction, darkMode }) => {
   const options = [
-    { id: 'pickup', text: 'Schedule a pickup' },
+    { id: 'pickup', text: 'Special Collection' },
     { id: 'service', text: 'Contact customer service' },
-    { id: 'demo', text: 'Watch a demo' }
+    // { id: 'demo', text: 'Watch a demo' }
   ];
 
   const handleOptionClick = (optionId) => {
@@ -54,7 +54,7 @@ const QuickLinksMenu = ({ isOpen, onClose, onAction, darkMode }) => {
                   block w-full px-4 py-2 rounded-lg
                   text-sm font-medium text-left
                   transition-colors duration-200
-                  flex items-center
+                  items-center
                   ${darkMode
                     ? 'hover:bg-gray-700/50 text-gray-200 hover:text-white'
                     : 'hover:bg-gray-50 text-gray-600 hover:text-gray-900'}
