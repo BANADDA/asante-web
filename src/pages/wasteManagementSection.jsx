@@ -176,7 +176,7 @@ const WasteManagementSection = () => {
                                 <Card className="shadow-lg border shadow-gray-500/10 rounded-xl overflow-hidden">
                                     <CardHeader floated={false} className="relative h-48 sm:h-56 m-0 p-0 rounded-none">
                                         <img
-                                            src="/img/waste-4.jpg"
+                                            src="/img/1.jpg"
                                             alt="Waste Management Service"
                                             className="h-full w-full object-cover"
                                         />

@@ -1,49 +1,15 @@
 import { ArrowUpRight, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { servicesContent } from '../data/servicesContent';
 
 const ServicesSection = () => {
     const [selectedService, setSelectedService] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [visibleCards, setVisibleCards] = useState([]);
-    const cardsRef = useRef([]);
-
-    useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const handleIntersection = (entries, index) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Add a slight delay based on the card's index
-                    setTimeout(() => {
-                        setVisibleCards(prev => [...prev, index]);
-                    }, index * 300); // 200ms delay between each card
-                }
-            });
-        };
-
-        const observers = cardsRef.current.map((card, index) => {
-            const observer = new IntersectionObserver(
-                (entries) => handleIntersection(entries, index),
-                observerOptions
-            );
-            if (card) observer.observe(card);
-            return observer;
-        });
-
-        return () => {
-            observers.forEach(observer => observer.disconnect());
-        };
-    }, []);
 
     const getCardStyle = (index) => {
         const styles = [
             {
-                wrapper: "bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-500 group",
+                wrapper: "bg-green-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-500 group",
                 imageWrap: "h-40 rounded-t-lg overflow-hidden",
                 content: "p-4"
             },
@@ -58,7 +24,7 @@ const ServicesSection = () => {
                 content: "p-4"
             },
             {
-                wrapper: "bg-blue-50 rounded-lg shadow-sm hover:shadow-md transition-all duration-500 group",
+                wrapper: "bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-500 group",
                 imageWrap: "h-40 rounded-t-lg overflow-hidden",
                 content: "p-4"
             },
@@ -84,7 +50,7 @@ const ServicesSection = () => {
 
     return (
         <>
-            <section className="w-full max-w-7xl mx-auto p-4 sm:p-6">
+            <section className="w-full max-w-7xl mx-auto p-4 sm:p-6 bg-blue-50 rounded-lg">
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
                     <h2 className="text-xl font-bold text-gray-900 mb-4 sm:mb-0">
@@ -94,7 +60,7 @@ const ServicesSection = () => {
                         {servicesContent.icons.map(({ id, Icon }) => (
                             <div
                                 key={id}
-                                className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center"
+                                className="w-8 h-8 rounded-lg bg-white flex items-center justify-center"
                             >
                                 <Icon className="w-4 h-4 text-gray-600" />
                             </div>
@@ -109,12 +75,11 @@ const ServicesSection = () => {
                         return (
                             <div
                                 key={index}
-                                ref={el => cardsRef.current[index] = el}
-                                className={`${style.wrapper} cursor-pointer transform transition-all duration-500 
-                                    ${visibleCards.includes(index) 
-                                        ? 'opacity-100 translate-y-0' 
-                                        : 'opacity-0 translate-y-10'}`}
+                                className={`${style.wrapper} cursor-pointer transform transition-all duration-500`}
                                 onClick={(e) => handleExploreClick(service, e)}
+                                data-aos="fade-up" 
+                                data-aos-delay={index * 100}
+                                data-aos-duration="800"
                             >
                                 <div className={style.imageWrap}>
                                     <img
@@ -144,7 +109,7 @@ const ServicesSection = () => {
                 </div>
             </section>
 
-            {/* Modal remains unchanged */}
+            {/* Modal with AOS animation */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                     <div
@@ -152,7 +117,12 @@ const ServicesSection = () => {
                         aria-hidden="true"
                         onClick={() => setIsModalOpen(false)}
                     />
-                    <div className="relative bg-white rounded-xl shadow-xl w-full max-w-3xl mx-auto my-8" style={{ maxHeight: 'calc(100vh - 100px)' }}>
+                    <div 
+                        className="relative bg-white rounded-xl shadow-xl w-full max-w-3xl mx-auto my-8" 
+                        style={{ maxHeight: 'calc(100vh - 100px)' }}
+                        data-aos="zoom-in" 
+                        data-aos-duration="400"
+                    >
                         <button
                             onClick={() => setIsModalOpen(false)}
                             className="absolute right-4 top-4 z-10 text-red-400 hover:text-red-500 transition-colors"

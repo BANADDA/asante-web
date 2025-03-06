@@ -7,11 +7,11 @@ export const footerContent = {
   description: "We recognize that the right service for home is the most important choice. Asante can provide the waste collection you need for your home, with trusted service.",
   
   officeInfo: {
-    title: "London Office",
-    address: "The Great Kings Building Management 2307\nBeverley Road, Brooklyn, NY 14784",
-    email: "info@asantewaste.com",
-    phone: "+2 0116114574l",
-    coordinates: [40.7128, -74.0060], // New York coordinates
+    title: "Kampala Office",
+    address: "East Africa Investment Building - 2nd Floor Suite A\nLuzira Industrial Park, Block 243 Plot 2490, YK Hamied Road\nP.O. Box 100810, Kampala - Uganda",
+    email: "info@asantewm.com",
+    phone: "+256 414 691 868",
+    coordinates: [0.3476, 32.5825], // Kampala coordinates
     buttonText: "Send Request"
   },
   

@@ -21,8 +21,12 @@ const ArrowIcon = () => (
   </div>
 );
 
-const ServiceCard = ({ icon: Icon, title, description, whiteBackground }) => (
-  <div className={`${whiteBackground ? 'bg-white' : 'bg-green-50/80'} p-6 rounded-lg relative min-h-[220px] shadow-sm hover:shadow-md transition-shadow duration-200`}>
+const ServiceCard = ({ icon: Icon, title, description, whiteBackground, index }) => (
+  <div 
+    className={`${whiteBackground ? 'bg-white' : 'bg-green-50/80'} p-6 rounded-lg relative min-h-[220px] shadow-sm hover:shadow-md transition-shadow duration-200`}
+    data-aos="fade-up"
+    data-aos-delay={100 + (index * 50)}
+  >
     <div className="mb-4">
       <Icon className="w-6 h-6 text-green-600" />
     </div>
@@ -109,7 +113,7 @@ const AllServices = () => {
   ];
 
   return (
-    <div className="bg-white min-h-screen font-sans">
+    <div className="bg-blue-50 min-h-screen font-sans">
       {/* Hero Section */}
       <div className="relative h-[250px] bg-[#0d2b09] overflow-hidden">
         <div className="absolute inset-0 bg-[url('/img/waste-4.jpg')] bg-cover bg-center opacity-30"></div>
@@ -140,6 +144,7 @@ const AllServices = () => {
               title={service.title}
               description={service.description}
               whiteBackground={service.whiteBackground}
+              index={index}
             />
           ))}
         </div>

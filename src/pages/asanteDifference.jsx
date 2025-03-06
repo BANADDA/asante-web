@@ -10,7 +10,7 @@ const serviceDetails = {
   'Residential Waste': {
     icon: Building2,
     title: 'Residential Waste Management',
-    description: 'Comprehensive waste collection services for homes and residential areas.',
+    description: 'We provide well-organized and responsive refuse collection services to all types of residents.',
     features: [
       'Weekly scheduled pickups',
       'Recycling services',
@@ -22,29 +22,29 @@ const serviceDetails = {
     title: 'Commercial Waste Solutions',
     description: 'Tailored waste management solutions for businesses and commercial properties.',
     features: [
-      'Daily/weekly collection schedules',
-      'Bulk waste removal',
+      'Customized waste collection operations',
+      'Meeting and exceeding clients\' expectations',
       'Compliance documentation'
     ]
   },
   'Retail And Institutional': {
     icon: Store,
-    title: 'Retail & Institutional Services',
-    description: 'Specialized waste management for retail stores, schools, and institutions.',
+    title: 'Construction & Demolition Waste Solution',
+    description: 'From design to construction, we help contractors and builders achieve their green-building and sustainability goals.',
     features: [
-      'High-volume waste handling',
-      'Recycling programs',
-      'Loading dock collection'
+      'Full-service waste disposal solutions',
+      'Roll-off container rental services',
+      'Construction waste recycling'
     ]
   },
   'Commercial Liquid': {
     icon: Droplets,
-    title: 'Commercial Liquid Waste',
-    description: 'Safe disposal of commercial liquid waste and hazardous materials.',
+    title: 'Cesspool & Drain Cleaning',
+    description: 'Rapid, responsive services for sewage spills and drain blockages using the latest technology.',
     features: [
-      'EPA-compliant disposal',
-      'Scheduled collection',
-      'Emergency response'
+      'Specialist jetting equipment',
+      'Vacuum tankers',
+      '24/7 emergency response'
     ]
   },
   'Dumpster Rental': {
@@ -70,27 +70,61 @@ const serviceDetails = {
 };
 
 const ServiceDetailsModal = ({ service, visible }) => {
-  if (!visible) return null;
-  
   const details = serviceDetails[service];
   
+  if (!details || !visible) return null;
+  
+  const { icon: Icon, title, description, features } = details;
+  
   return (
-    <div className="absolute left-full top-0 ml-2 w-80 bg-white rounded-lg shadow-xl p-4 z-50">
-      <div className="flex items-start gap-3 mb-3">
-        {details.icon && <details.icon className="w-5 h-5 text-green-600 shrink-0 mt-1" />}
-        <div>
-          <h3 className="font-semibold text-lg">{details.title}</h3>
-          <p className="text-sm text-gray-600">{details.description}</p>
+    <div 
+      className="w-full md:w-3/4 lg:w-4/5 p-6 bg-white rounded-lg shadow"
+      data-aos="fade-left"
+      data-aos-duration="800"
+    >
+      <div className="flex flex-col md:flex-row gap-6 items-start">
+        <div className="flex-shrink-0">
+          <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+            <Icon className="w-8 h-8 text-green-700" />
+          </div>
+        </div>
+        
+        <div className="flex-grow">
+          <h2 className="text-2xl font-bold mb-4">{title}</h2>
+          <p className="text-gray-600 mb-6">{description}</p>
+          
+          <div className="mb-8" data-aos="fade-up" data-aos-delay="200">
+            <h3 className="text-lg font-semibold mb-3">Service Features</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {features.map((feature, index) => (
+                <div 
+                  key={index} 
+                  className="flex items-center gap-3"
+                  data-aos="fade-up"
+                  data-aos-delay={300 + (index * 50)}
+                >
+                  <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-white">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="pt-4 border-t border-gray-200" data-aos="fade-up" data-aos-delay="500">
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 text-white px-5 py-2 rounded-lg transition-colors duration-200"
+            >
+              <span>Request This Service</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </div>
-      <ul className="space-y-2">
-        {details.features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-2 text-sm text-gray-600">
-            <div className="w-1.5 h-1.5 bg-green-600 rounded-full" />
-            {feature}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
@@ -122,54 +156,55 @@ const ServicesLayout = () => {
     <div className="bg-white min-h-screen font-sans">
       {/* Hero Section */}
       <div className="relative h-[200px] bg-green-900 overflow-hidden">
-  <div className="absolute inset-0 bg-[url('/img/waste-4.jpg')] bg-cover bg-center opacity-30"></div>
-  {/* Dark overlay */}
-  <div className="absolute inset-0 bg-black opacity-40"></div>
-  <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
-    <h1 className="text-4xl font-bold text-white mb-6">
-      Our Services
-    </h1>
-    <p className="text-xl text-gray-100 max-w-5xl font-medium leading-snug">
-      We offer a full range of waste management services to
-      both public & private clients across categories such as
-      Hazardous Waste, Domestic Waste, Medical Waste and
-      Pharmaceutical, Cesspool, E-Waste as well as Oil and Gas
-      Waste
-    </p>
-  </div>
-</div>
+        <div className="absolute inset-0 bg-[url('/img/waste-4.jpg')] bg-cover bg-center opacity-30"></div>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black opacity-40"></div>
+        <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
+          <h1 className="text-4xl font-bold text-white mb-6" data-aos="fade-up">
+            Our Services
+          </h1>
+          <p className="text-xl text-gray-100 max-w-5xl font-medium leading-snug" data-aos="fade-up" data-aos-delay="200">
+            We offer a full range of waste management services to
+            both public & private clients across categories such as
+            Hazardous Waste, Domestic Waste, Medical Waste and
+            Pharmaceutical, Cesspool, E-Waste as well as Oil and Gas
+            Waste
+          </p>
+        </div>
+      </div>
 
 
       {/* Main Content Area */}
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left Sidebar */}
-          <div className="w-full md:w-72 shrink-0">
+          <div className="w-full md:w-72 shrink-0" data-aos="fade-right" data-aos-duration="800">
             {/* Services Section */}
             <div className="mb-8">
               <h2 className="text-xl font-semibold mb-4">Our Services</h2>
               <div className="flex flex-col gap-2">
-                {Object.keys(serviceDetails).map((service) => (
-                  <ServiceButton key={service} service={service} />
+                {Object.keys(serviceDetails).map((service, index) => (
+                  <div key={service} data-aos="fade-up" data-aos-delay={100 + (index * 50)}>
+                    <ServiceButton service={service} />
+                  </div>
                 ))}
               </div>
             </div>
 
             {/* Trusted Section */}
-            <div className="bg-green-900 p-6 rounded-lg text-white mb-8">
-              <h3 className="text-xl font-bold mb-3">Trusted And Reliable Waste Collection!</h3>
-              <p className="mb-4">We offer customers regular collection of trash on a scheduled or call basis, with a safe level of service.</p>
-              <div className="mb-4">
-                <p className="mb-2">+256 778 841383</p>
-                <p>Kampala, Uganda</p>
-              </div>
+            <div className="bg-green-900 p-6 rounded-lg text-white mb-8" data-aos="fade-up" data-aos-delay="300">
+              <span className="block mb-4">Trusted And Reliable Waste Collection!</span>
+              <a href="tel:+256414691868" className="hover:text-green-200 transition-colors">
+                +256 414 691 868
+              </a>
+              <div className="text-sm mt-1">Kampala, Uganda</div>
               <Link 
-  to="/contact" 
-  className="flex items-center gap-2 bg-yellow-800 hover:bg-yellow-700 text-white px-4 py-2 rounded transition-colors duration-200"
->
-  <span>Contact Our Team</span>
-  <ArrowRight className="w-4 h-4" />
-</Link>
+                to="/contact" 
+                className="flex items-center gap-2 bg-yellow-800 hover:bg-yellow-700 text-white px-4 py-2 rounded transition-colors duration-200"
+              >
+                <span>Contact Our Team</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
 
             {/* Download Section */}

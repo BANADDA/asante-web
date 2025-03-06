@@ -34,17 +34,19 @@ export function Navbar({ routes }) {
           <div className="flex justify-between items-center h-8">
             <div className="flex space-x-4 text-xs">
               <Link to="/careers" className="hover:text-gray-300">Careers</Link>
-              <Link to="/faqs" className="hover:text-gray-300">FAQs</Link>
+              <Link to="/faq" className="hover:text-gray-300">FAQs</Link>
             </div>
             
             <div className="flex space-x-4 text-xs">
               <span className="flex items-center">
                 <Phone className="w-3 h-3 mr-1" />
-                <a href="tel:+256778841383">+256 778 272688/+256 751 272683</a>
+                <a href="tel:+256414691868">+256 414 691 868</a>
+                <span className="mx-1">|</span>
+                <a href="tel:+256751272683">+256 751 272 683</a>
               </span>
               <span className="flex items-center">
                 <Mail className="w-3 h-3 mr-1" />
-                <a href="mailto:operations@asantewm.com">cc@asantewm.com</a>
+                <a href="mailto:info@asantewm.com">info@asantewm.com</a>
               </span>
             </div>
           </div>
@@ -159,6 +161,11 @@ export function Navbar({ routes }) {
                     <ShoppingCart className="w-5 h-5 text-yellow-600 mr-1.5" />
                     <span className="text-sm text-gray-600">Cart ({cartCount})</span>
                   </div>
+                </div>
+                {/* Additional quick links for mobile */}
+                <div className="flex justify-between mt-3 pb-3 border-b border-gray-100">
+                  <Link to="/careers" className="text-sm text-gray-600 hover:text-blue-600">Careers</Link>
+                  <Link to="/faq" className="text-sm text-gray-600 hover:text-blue-600">FAQs</Link>
                 </div>
                 {/* Mobile "Request Schedule" Button */}
                 <Link 

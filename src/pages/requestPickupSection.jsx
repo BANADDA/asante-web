@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { inquiryFormContent } from '../data/inquiryFormContent';
 
 const InquiryFormSection = () => {
@@ -143,8 +144,8 @@ const InquiryFormSection = () => {
   const hidden = 'opacity-0 translate-y-10';
 
   return (
-    <section className="w-full bg-[#012920] py-12 flex items-center justify-center p-4">
-      <div className="max-w-7xl w-full bg-white rounded-lg overflow-hidden flex flex-col md:flex-row">
+    <section className="w-full bg-green-50 py-12 flex items-center justify-center p-4">
+      <div className="max-w-7xl w-full bg-white rounded-lg overflow-hidden flex flex-col md:flex-row shadow-lg">
         {/* Left Side - Stats with Background */}
         <div className="w-full md:w-2/5 relative">
           <div 
@@ -158,35 +159,37 @@ const InquiryFormSection = () => {
             <div className="absolute inset-0 bg-green-600/90"></div>
           </div>
 
-          <div className="relative z-10 p-6 flex flex-col justify-between h-full text-white">
+          <div className="relative z-10 p-8 flex flex-col justify-between h-full text-white">
             <div>
               <div ref={statsRef} className={`${fadeInUp} ${isVisible.stats ? visible : hidden}`}>
-                <h1 className="text-5xl font-bold mb-3">{stats.number}</h1>
-                <h2 className="text-xl font-bold leading-tight mb-4">
+                <h2 className="text-3xl font-bold leading-tight mb-4">
                   {stats.title}<br />{stats.subtitle}
                 </h2>
               </div>
               
               <div ref={descriptionRef} className={`${fadeInUp} ${isVisible.description ? visible : hidden} delay-200`}>
-                <p className="mb-3 text-white/90 text-sm">{stats.description1}</p>
-                <p className="mb-4 text-white/90 text-sm">{stats.description2}</p>
+                <p className="mb-3 text-white/90">{stats.description1}</p>
+                <p className="mb-6 text-white/90">{stats.description2}</p>
               </div>
             </div>
 
             <div ref={buttonRef} className={`${fadeInUp} ${isVisible.button ? visible : hidden} delay-300`}>
-              <button className="w-fit px-4 py-1.5 border border-white text-white hover:bg-white/10 transition-colors duration-200 rounded text-sm flex items-center gap-1.5">
+              <Link 
+                to="/contact" 
+                className="w-fit px-6 py-2.5 bg-white text-green-600 hover:bg-green-50 transition-colors duration-200 rounded-md font-medium flex items-center gap-2"
+              >
                 {stats.ctaButton}
                 <span>→</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
 
         {/* Right Side - Form */}
-        <div ref={formRef} className={`w-full md:w-3/5 p-6 ${fadeInUp} ${isVisible.form ? visible : hidden} delay-400`}>
-          <h3 className="text-lg font-bold text-gray-900 mb-2">{form.title}</h3>
+        <div ref={formRef} className={`w-full md:w-3/5 p-8 ${fadeInUp} ${isVisible.form ? visible : hidden} delay-400`}>
+          <h3 className="text-xl font-bold text-gray-900 mb-3">{form.title}</h3>
           
-          <p className="text-gray-600 mb-4 text-xs">
+          <p className="text-gray-600 mb-6">
             {form.subtitle}{' '}
             <a href={`tel:${form.phoneNumber}`} className="text-green-600 font-medium">
               {form.phoneNumber}
@@ -194,11 +197,11 @@ const InquiryFormSection = () => {
             {form.phoneText}
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div className="grid grid-cols-2 gap-3">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
               {/* Service Type */}
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   {form.fields.serviceType.label}
                 </label>
                 <select
@@ -206,7 +209,7 @@ const InquiryFormSection = () => {
                   value={formData.serviceType}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-2.5 py-1.5 border rounded text-xs focus:outline-none focus:ring-1 focus:ring-green-500 
+                  className={`w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 
                     ${errors.serviceType && touched.serviceType ? 'border-red-500' : 'border-gray-300'}`}
                 >
                   <option value="">{form.fields.serviceType.placeholder}</option>
@@ -221,7 +224,7 @@ const InquiryFormSection = () => {
 
               {/* Business Type */}
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   {form.fields.businessType.label}
                 </label>
                 <select
@@ -229,7 +232,7 @@ const InquiryFormSection = () => {
                   value={formData.businessType}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`w-full px-2.5 py-1.5 border rounded text-xs focus:outline-none focus:ring-1 focus:ring-green-500 
+                  className={`w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 
                     ${errors.businessType && touched.businessType ? 'border-red-500' : 'border-gray-300'}`}
                 >
                   <option value="">{form.fields.businessType.placeholder}</option>
@@ -245,7 +248,7 @@ const InquiryFormSection = () => {
 
             {/* Subject */}
             <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 {form.fields.subject.label}
               </label>
               <input 
@@ -255,7 +258,7 @@ const InquiryFormSection = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder={form.fields.subject.placeholder}
-                className={`w-full px-2.5 py-1.5 border rounded text-xs focus:outline-none focus:ring-1 focus:ring-green-500 
+                className={`w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 
                   ${errors.subject && touched.subject ? 'border-red-500' : 'border-gray-300'}`}
               />
               {errors.subject && touched.subject && (
@@ -265,7 +268,7 @@ const InquiryFormSection = () => {
 
             {/* Message */}
             <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 {form.fields.message.label}
               </label>
               <textarea 
@@ -275,7 +278,7 @@ const InquiryFormSection = () => {
                 onBlur={handleBlur}
                 rows={2}
                 placeholder={form.fields.message.placeholder}
-                className={`w-full px-2.5 py-1.5 border rounded text-xs focus:outline-none focus:ring-1 focus:ring-green-500 
+                className={`w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 
                   ${errors.message && touched.message ? 'border-red-500' : 'border-gray-300'}`}
               />
               {errors.message && touched.message && (
@@ -283,10 +286,10 @@ const InquiryFormSection = () => {
               )}
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   {form.fields.fullName.label}
                 </label>
                 <input 
@@ -296,7 +299,7 @@ const InquiryFormSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder={form.fields.fullName.placeholder}
-                  className={`w-full px-2.5 py-1.5 border rounded text-xs focus:outline-none focus:ring-1 focus:ring-green-500 
+                  className={`w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 
                     ${errors.fullName && touched.fullName ? 'border-red-500' : 'border-gray-300'}`}
                 />
                 {errors.fullName && touched.fullName && (
@@ -306,7 +309,7 @@ const InquiryFormSection = () => {
 
               {/* Company Name */}
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   {form.fields.companyName.label}
                 </label>
                 <input 
@@ -316,7 +319,7 @@ const InquiryFormSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder={form.fields.companyName.placeholder}
-                  className={`w-full px-2.5 py-1.5 border rounded text-xs focus:outline-none focus:ring-1 focus:ring-green-500 
+                  className={`w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 
                     ${errors.companyName && touched.companyName ? 'border-red-500' : 'border-gray-300'}`}
                 />
                 {errors.companyName && touched.companyName && (
@@ -325,10 +328,10 @@ const InquiryFormSection = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-4">
               {/* Email */}
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   {form.fields.email.label}
                 </label>
                 <input 
@@ -338,7 +341,7 @@ const InquiryFormSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder={form.fields.email.placeholder}
-                  className={`w-full px-2.5 py-1.5 border rounded text-xs focus:outline-none focus:ring-1 focus:ring-green-500 
+                  className={`w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 
                     ${errors.email && touched.email ? 'border-red-500' : 'border-gray-300'}`}
                 />
                 {errors.email && touched.email && (
@@ -348,7 +351,7 @@ const InquiryFormSection = () => {
 
               {/* Phone */}
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   {form.fields.phone.label}
                 </label>
                 <input 
@@ -358,7 +361,7 @@ const InquiryFormSection = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder={form.fields.phone.placeholder}
-                  className={`w-full px-2.5 py-1.5 border rounded text-xs focus:outline-none focus:ring-1 focus:ring-green-500 
+                  className={`w-full px-3 py-2 border rounded text-sm focus:outline-none focus:ring-1 focus:ring-green-500 
                     ${errors.phone && touched.phone ? 'border-red-500' : 'border-gray-300'}`}
                 />
                 {errors.phone && touched.phone && (

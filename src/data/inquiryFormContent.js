@@ -2,15 +2,15 @@
 
 export const inquiryFormContent = {
     stats: {
-      number: "93K",
-      title: "Satisfied Clients We",
-      subtitle: "Served Globally",
+      number: "",
+      title: "Request Your Personalized",
+      subtitle: "Waste Management Solution",
       description1: "We offer customers reliable and regular collection of trash and materials, on a scheduled or call basis, with a safe and unique level of service for family.",
       description2: "Whatever the waste management needs, we've got a solution that will perfectly suit you.",
       ctaButton: "Get Started Now"
     },
     form: {
-      title: "Send an Inquiry",
+      title: "Contact Our Waste Management Experts",
       subtitle: "Please complete the form below, and we'll be in touch. Or you can call us",
       phoneNumber: "+42 011 61145741",
       phoneText: "for immediate assistance!",
