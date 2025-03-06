@@ -22,6 +22,11 @@ export const routes = [
     //   { name: "Shop", path: "/services" }
     // ]
   },  
+  {
+    name: "Gallery",
+    path: "/gallery",
+    // element: <Gallery />
+  },
   // {
   //   name: "Contact Us",
   //   path: "/contact",

@@ -11,6 +11,7 @@ import ServicesLayout from "./pages/asanteDifference";
 import CareersPage from "./pages/careers";
 import ContactPage from "./pages/contact/contactHome";
 import FAQPage from "./pages/faq";
+import Gallery from "./pages/Gallery";
 import AboutUs from "./pages/servicesScreen";
 import FeedbackButton from "./widgets/feedback/FeedbackButton";
 import { Footer } from "./widgets/layout";
@@ -45,6 +46,7 @@ function App() {
           <Route path="/contact" element={<ContactPage/>} />
           <Route path="/careers" element={<CareersPage/>} />
           <Route path="/faq" element={<FAQPage/>} />
+          <Route path="/gallery" element={<Gallery/>} />
         </Routes>
       </main>
       <FeedbackButton/>
